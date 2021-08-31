@@ -313,10 +313,11 @@ export const isLatestJavaDownloaded = async (
   return { isValid, log: log?.stderr };
 };
 
+console.log(window.env)
 export const get7zPath = async () => {
   // Get userData from ipc because we can't always get this from redux
   let baseDir = await ipcRenderer.invoke('getExecutablePath');
-  if (process.env.NODE_ENV === 'development') {
+  if (window.env.NODE_ENV === 'development') {
     baseDir = path.resolve(baseDir, '../../');
     if (process.platform === 'win32') {
       baseDir = path.join(baseDir, '7zip-bin/win/x64');

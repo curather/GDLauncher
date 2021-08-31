@@ -38,7 +38,7 @@ const SystemNavbar = () => {
     const isAppImageVar = await ipcRenderer.invoke('isAppImage');
     setIsAppImage(isAppImageVar);
     if (
-      process.env.REACT_APP_RELEASE_TYPE === 'setup' &&
+      window.env.REACT_APP_RELEASE_TYPE === 'setup' &&
       (isAppImageVar || process.platform === 'win32')
     ) {
       ipcRenderer.invoke('checkForUpdates');
@@ -47,7 +47,7 @@ const SystemNavbar = () => {
       });
     } else if (
       process.platform === 'win32' &&
-      process.env.REACT_APP_RELEASE_TYPE !== 'setup'
+      window.env.REACT_APP_RELEASE_TYPE !== 'setup'
     ) {
       dispatch(checkForPortableUpdates())
         .then(v => dispatch(updateUpdateAvailable(Boolean(v))))
@@ -73,7 +73,7 @@ const SystemNavbar = () => {
   }, []);
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development') return;
+    if (window.env.NODE_ENV === 'development') return;
     setTimeout(() => {
       checkForUpdates();
       setInterval(() => {

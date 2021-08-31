@@ -619,7 +619,7 @@ const General = () => {
         </Button>
       </div>
       <Hr />
-      {/* {process.env.REACT_APP_RELEASE_TYPE === 'setup' && ( */}
+      {/* {window.env.REACT_APP_RELEASE_TYPE === 'setup' && ( */}
       <CustomDataPathContainer>
         <Title
           css={`

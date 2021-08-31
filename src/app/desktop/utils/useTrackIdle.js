@@ -8,7 +8,7 @@ const useTrackIdle = pathname => {
   const clientToken = useSelector(state => state.app.clientToken);
   useEffect(() => {
     let interval;
-    if (clientToken && process.env.NODE_ENV !== 'development') {
+    if (clientToken && window.env.NODE_ENV !== 'development') {
       interval = setInterval(() => {
         analytics.idle(pathname);
       }, INTERVAL_DURATION);

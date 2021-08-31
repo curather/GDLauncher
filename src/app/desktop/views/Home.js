@@ -82,7 +82,7 @@ const Home = () => {
       // if (
       //   oldInstances.length > 0 &&
       //   instances.length === 0 &&
-      //   process.env.NODE_ENV !== 'development'
+      //   window.env.NODE_ENV !== 'development'
       // ) {
       //   dispatch(openModal('InstancesMigration', { preventClose: true }));
       // }

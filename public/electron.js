@@ -236,7 +236,11 @@ function createWindow() {
       enableRemoteModule: true,
       sandbox: false,
       // Disable in dev since I think hot reload is messing with it
-      webSecurity: !isDev
+      webSecurity: !isDev,
+      additionalArguments: [
+        `--react-app-release-type=${process.env.REACT_APP_RELEASE_TYPE}`,
+        `--node-env=${process.env.NODE_ENV}`
+      ]
     }
   });
 

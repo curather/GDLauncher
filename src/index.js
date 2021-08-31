@@ -1,3 +1,4 @@
+import './injectEnv';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -17,9 +18,9 @@ import ErrorBoundary from './common/ErrorBoundary';
 
 const Root =
   // eslint-disable-next-line no-nested-ternary
-  process.env.NODE_ENV === 'development'
+  window.env.NODE_ENV === 'development'
     ? RootDev
-    : process.env.APP_TYPE === 'web'
+    : window.env.APP_TYPE === 'web'
     ? RootWeb
     : RootElectron;
 

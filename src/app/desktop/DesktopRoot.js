@@ -123,7 +123,7 @@ function DesktopRoot({ store }) {
       });
     }
 
-    if (process.env.NODE_ENV === 'development' && currentAccount) {
+    if (window.env.NODE_ENV === 'development' && currentAccount) {
       dispatch(received(features.mcAuthentication));
       dispatch(push('/home'));
     } else if (currentAccount) {
@@ -164,7 +164,7 @@ function DesktopRoot({ store }) {
   }, [currentAccount]);
 
   useEffect(() => {
-    if (clientToken && process.env.NODE_ENV !== 'development') {
+    if (clientToken && window.env.NODE_ENV !== 'development') {
       ga.setUserId(clientToken);
       ga.trackPage(location.pathname);
     }
