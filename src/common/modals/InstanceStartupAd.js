@@ -2,8 +2,7 @@ import React, { memo, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons';
 import Modal from '../components/Modal';
-import { closeModal, openModal } from '../reducers/modals/actions';
-import BisectHosting from '../../ui/BisectHosting';
+import { closeModal } from '../reducers/modals/actions';
 
 let timer;
 
@@ -12,17 +11,6 @@ const InstanceStartupAd = ({ instanceName }) => {
   const startedInstances = useSelector(state => state.startedInstances);
   const isPlaying = startedInstances[instanceName];
   const initTime = useMemo(() => Date.now(), []);
-
-  const openBisectHostingModal = () => {
-    if (timer) {
-      clearTimeout(timer);
-      timer = null;
-    }
-    dispatch(closeModal());
-    setTimeout(() => {
-      dispatch(openModal('BisectHosting'));
-    }, 225);
-  };
 
   useEffect(() => {
     if (!timer && (isPlaying?.initialized || !isPlaying)) {
@@ -50,7 +38,7 @@ const InstanceStartupAd = ({ instanceName }) => {
   return (
     <Modal
       css={`
-        height: 330px;
+        height: 230px;
         width: 650px;
         overflow-x: hidden;
       `}
@@ -80,47 +68,6 @@ const InstanceStartupAd = ({ instanceName }) => {
             `}
           />
         </span>
-        <div
-          css={`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            & > * {
-              margin: 0 20px;
-            }
-          `}
-        >
-          <span
-            css={`
-              font-size: 14px;
-            `}
-          >
-            Grab a server from <br /> our official partner
-          </span>
-          <div
-            css={`
-              cursor: pointer;
-            `}
-          >
-            <BisectHosting
-              onClick={openBisectHostingModal}
-              size={60}
-              showPointerCursor
-            />
-          </div>
-          <div>
-            <span
-              css={`
-                font-size: 70px;
-                color: ${({ theme }) => theme.palette.colors.red};
-              `}
-            >
-              &#10084;
-            </span>
-            <div>Thank you!</div>
-          </div>
-        </div>
       </div>
     </Modal>
   );
