@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { memo, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { ipcRenderer } from 'electron';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,9 +7,6 @@ import { faBug, faStar, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { useInView } from 'react-intersection-observer';
 import Modal from '../../components/Modal';
 import SocialButtons from '../../components/SocialButtons';
-import KoFiButton from '../../assets/ko-fi.png';
-import UpdateIllustration from '../../assets/update_illustration.png';
-import { openModal } from '../../reducers/modals/actions';
 import ga from '../../utils/analytics';
 import changelog from './changeLog';
 
@@ -70,7 +66,6 @@ const ChangeLogs = () => {
   const [version, setVersion] = useState(null);
   const [skipIObserver, setSkipIObserver] = useState(true);
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const dispatch = useDispatch();
   const { ref: intersectionObserverRef, inView: insectionObserverInView } =
     useInView({
       threshold: 0.3,
@@ -101,11 +96,6 @@ const ChangeLogs = () => {
     }
   }, [insectionObserverInView]);
 
-  const openBisectModal = () => {
-    dispatch(openModal('BisectHosting'));
-    ga.sendCustomEvent('changelogModalOpenBisect');
-  };
-
   return (
     <Modal
       css={`
@@ -117,53 +107,6 @@ const ChangeLogs = () => {
     >
       <Container>
         <Header>
-          <img
-            css={`
-              border-radius: 5px;
-            `}
-            src={UpdateIllustration}
-            alt="New Version"
-          />
-          <div
-            css={`
-              margin-top: 20px;
-              color: ${props => props.theme.palette.text.third};
-              span {
-                color: ${props => props.theme.palette.text.primary};
-                cursor: pointer;
-                text-decoration: underline;
-              }
-            `}
-          >
-            If you appreciate our work, please consider supporting us through a
-            donation or grab a server from our official partner{' '}
-            <span onClick={openBisectModal}>BisectHosting</span>
-          </div>
-          <div
-            css={`
-              display: flex;
-              align-items: center;
-              justify-content: start;
-              margin-bottom: 20px;
-              margin-top: 20px;
-              a:nth-child(1) {
-                margin-right: 20px;
-              }
-              img {
-                border-radius: 30px;
-                height: 40px;
-                cursor: pointer;
-                transition: transform 0.2s ease-in-out;
-                &:hover {
-                  transform: scale(1.05);
-                }
-              }
-            `}
-          >
-            <a href="https://ko-fi.com/gdlauncher">
-              <img src={KoFiButton} alt="Ko-Fi" />
-            </a>
-          </div>
           <a
             css={`
               margin-top: 20px;

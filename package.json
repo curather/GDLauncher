@@ -132,6 +132,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-webpack-plugin": "^3.1.1",
     "husky": "^7.0.1",
     "native-ext-loader": "^2.3.0",
     "prettier": "^2.3.2",
@@ -145,12 +146,12 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "7zip-bin": "^5.1.1",
     "@loadable/babel-plugin": "^5.13.2",
     "@sentry/integrations": "^6.15.0",
     "@sentry/react": "^6.15.0",
     "@sentry/tracing": "^6.15.0",
     "@sentry/utils": "^6.15.0",
+    "7zip-bin": "^5.1.1",
     "antd": "4.16.11",
     "axios": "^0.21.1",
     "base64-stream": "^1.0.0",
