@@ -15,8 +15,8 @@ import {
   faTrash,
   faStop,
   faBoxOpen,
-  faCopy,
-  faServer
+  faCopy
+  // , faServer
 } from '@fortawesome/free-solid-svg-icons';
 import psTree from 'ps-tree';
 import { ContextMenuTrigger, ContextMenu, MenuItem } from 'react-contextmenu';
@@ -188,7 +188,7 @@ const Instance = ({ instanceName }) => {
     if (isInQueue || isPlaying) return;
     dispatch(addStartedInstance({ instanceName }));
     dispatch(launchInstance(instanceName));
-    dispatch(openModal('InstanceStartupAd', { instanceName }));
+    // dispatch(openModal('InstanceStartupAd', { instanceName }));
   };
   const openFolder = () => {
     ipcRenderer.invoke('openFolder', path.join(instancesPath, instance.name));
@@ -380,23 +380,6 @@ const Instance = ({ instanceName }) => {
               `}
             />
             Delete
-          </MenuItem>
-          <MenuItem divider />
-          <MenuItem
-            onClick={openBisectModal}
-            preventClose
-            css={`
-              border: 2px solid #04cbeb;
-              border-radius: 5px;
-            `}
-          >
-            <FontAwesomeIcon
-              icon={faServer}
-              css={`
-                margin-right: 10px;
-              `}
-            />
-            Create Server
           </MenuItem>
         </ContextMenu>
       </Portal>

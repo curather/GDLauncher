@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons';
 import Modal from '../components/Modal';
-import { closeModal } from '../reducers/modals/actions';
+// import { closeModal } from '../reducers/modals/actions';
 
-let timer;
+// let timer;
 
 const InstanceStartupAd = ({ instanceName }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <Modal
